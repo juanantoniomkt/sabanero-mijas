@@ -1,0 +1,96 @@
+<div *ngIf="login === true">
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <h1>
+            {{titulo}}
+          </h1>
+          <h2>{{subtitulo}}</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-10 offset-1"  id="actividad">
+      
+            <nav>
+      
+              <app-menu-usuario></app-menu-usuario>
+      
+            </nav>
+
+            <br>
+            <br>
+      
+
+            <span *ngIf="error === true" class="alert alert-danger">
+                Debe rellenar todos los campos
+            </span>
+
+              <br>
+              <br>
+
+            <div class="row row-striped">
+      
+                <form (ngSubmit)="onsubmit()">
+
+          
+                    <label for="email">email</label>
+                    <input type="email" name="email" id="email" [(ngModel)]="usuario.email" placeholder="email usuario">
+                    <br>
+
+                    <label for="clave">clave</label>
+                    <input type="password" name="clave" id="clave" [(ngModel)]="usuario.clave" placeholder="clave usuario">
+                    <br>
+          
+                    <label for="nombre">nombre</label>
+                    <input type="text" name="nombre" id="nombre" [(ngModel)]="usuario.nombre" placeholder="nombre usuario">
+                    <br>
+
+                    <label for="descripcion">descripcion</label>
+                    <textarea name="descripcion" id="descripcion" [(ngModel)]="usuario.descripcion" placeholder="descripcion usuario"></textarea>
+                    <br>
+
+                    <label for="foto">url foto</label>
+                    <input type="text" name="foto" id="foto" [(ngModel)]="usuario.foto" placeholder="foto usuario">
+                    <br>
+
+                    <label for="frase">frase</label>
+                    <input type="text" name="frase" id="frase" [(ngModel)]="usuario.frase" placeholder="frase usuario">
+                    <br>
+          
+                    <input type="submit" value="Agregar usuario" class="btn btn-success">
+          
+                    <br>
+                    <br>
+          
+                </form>
+      
+            </div>
+        </div>
+      </div>
+
+</div>
+
+<div *ngIf="login === false">
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <h1>
+            Permiso denegado
+          </h1>
+          <h2>no puedes acceder a esta página</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-10 offset-1"  id="actividad">
+      
+            <div class="row row-striped">
+      
+              contacte con el administrador
+      
+            </div>
+        </div>
+      </div>
+
+</div>

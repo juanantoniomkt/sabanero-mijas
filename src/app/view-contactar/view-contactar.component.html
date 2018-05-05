@@ -1,0 +1,72 @@
+<div *ngIf="login === true">
+
+<div class="row">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <h1>
+        {{titulo}}
+      </h1>
+      <h2>{{subtitulo}}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+      <br>
+      <br>
+      
+      <div *ngIf="mensajes?.length > 0;else noMensajes">
+
+      <div class="card">
+          <div class="card-block" *ngFor="let mensaje of mensajes">
+            <h4 class="card-title">{{mensaje.nombre}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{mensaje.email}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{mensaje.telefono}}</h6>
+            <p class="card-text">{{mensaje.mensaje}}</p>
+
+            <button (click)="deleteMensaje($event, mensaje)" class="btn btn-danger" *ngIf="login === true">Eliminar mensaje</button>
+
+
+          </div>
+        </div>
+
+      <br>
+      <br>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+
+<div *ngIf="login === false">
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <h1>
+            Permiso denegado
+          </h1>
+          <h2>no puedes acceder a esta página</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-10 offset-1"  id="actividad">
+      
+            <div class="row row-striped">
+      
+              contacte con el administrador
+      
+            </div>
+        </div>
+      </div>
+
+</div>
+
+<ng-template #noMensajes>
+    <br>
+    <div class="alert alert-info">No hay mensajes para mostrar.</div>
+</ng-template>

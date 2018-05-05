@@ -1,0 +1,25 @@
+.quienes_img
+{
+    width: 40%;
+}
+
+.contenedor_imagen
+{
+    text-align: center;
+}
+.card{
+	border-radius: 70px 70px 70px 70px;
+	-moz-border-radius: 70px 70px 70px 70px;
+	-webkit-border-radius: 70px 70px 70px 70px;
+	border: 0px solid #000000;
+}
+.card-block{
+	background-color: #4f81cb;
+	border-radius: 0px 0px 70px 70px;
+	-moz-border-radius: 0px 0px 70px 70px;
+	-webkit-border-radius: 0px 0px 70px 70px;
+	border: 0px solid #000000;
+}
+small{
+	color: #BBB;
+}

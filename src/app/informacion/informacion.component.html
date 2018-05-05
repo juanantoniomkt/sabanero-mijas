@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <h1>
+        {{titulo}}
+      </h1>
+      <h2>{{subtitulo}}</h2>
+      <br>
+  </div>
+</div>
+
+<nav *ngIf="login === true">
+
+    <app-menu-informacion></app-menu-informacion>
+
+</nav>
+
+  <div *ngIf="informaciones?.length > 0;else noInformaciones">
+
+  <div class="row">
+
+      <div *ngFor="let informacion of informaciones" class="col-12 col-sm-4 card" style="width: 20rem;">
+          <img width="300" height="200" class="card-img-top" src="{{informacion.imagen}}" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">{{informacion.titulo}}</h4>
+            <p class="card-text">{{informacion.resumen}}</p>
+            <a [routerLink]="['/informacion', informacion.id]" class="btn btn-primary">Más informacion</a>
+
+            <br>
+            <br>
+
+            <button (click)="deleteInformacion($event, informacion)" class="btn btn-danger" *ngIf="login === true">Eliminar</button><br>
+            <button (click)="editInformacion($event, informacion)" class="btn btn-primary" *ngIf="login === true">Actualizar</button>
+
+
+            <br>
+
+            <div *ngIf="login === true && editState && informacionToEdit.id === informacion.id">
+
+              <form (ngSubmit)="updateInformacion(informacion)">
+
+                <div>
+                  <input type="text" [(ngModel)]="informacion.titulo" name="titulo" id="titutlo" placeholder="editar titulo">
+                  <input type="text" maxlength="44" [(ngModel)]="informacion.resumen" name="resumen" id="resumen" placeholder="editar resumen">
+
+                  <br>
+
+                  <label for="imagen">url imagen</label>
+
+                  <br>
+
+                  <input type="text" [(ngModel)]="informacion.imagen" name="imagen" id="imagen" placeholder="url imagen">
+
+                  <textarea [(ngModel)]="informacion.descripcion" name="descripcion" id="descripcion" placeholder="editar descripcion" cols="30" rows="10">  
+                  </textarea>
+
+                </div>
+
+                <input type="submit" value="¡Listo!" class="btn btn-success">
+
+              </form>
+
+            </div>
+
+
+          </div>
+      </div>
+
+  </div>
+
+  </div>
+
+  <ng-template #noInformaciones>
+      <br>
+      <div class="alert alert-info">No hay secciones para mostrar.</div>
+  </ng-template>

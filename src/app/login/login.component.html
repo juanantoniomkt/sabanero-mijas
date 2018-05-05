@@ -1,0 +1,38 @@
+<h3> Login </h3>
+
+
+<div class="input-append newsletter-box text-center">
+
+    <form #loginForm="ngForm" (ngSubmit)="validar()" *ngIf="existe === false">
+
+    <i class="fa fa-at"></i>
+    
+    <input type="email" ngModel class="full text-center" placeholder="Email" name="email" id="email">
+
+    <br>
+    <i class="fa fa-key"></i>
+    
+    <input type="password" ngModel class="full text-center" placeholder="Password"  name="clave" id="clave">
+    
+    <br>
+
+    <button class="btn btn-secondary text-white" type="submit"> Login <i class="fa fa-long-arrow-right"> </i> </button>
+
+    </form>
+
+    <span *ngIf="existe === true">
+    Hola, {{nombre}}
+
+    <br>
+    <br>
+    <button (click)="salir()" class="btn btn-danger">Cerrar sesión</button>
+
+    </span>
+
+    <span *ngIf="error === true">
+        
+    ups! error de acceso
+    </span>
+
+
+</div>

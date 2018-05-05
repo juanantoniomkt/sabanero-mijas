@@ -1,0 +1,64 @@
+<div class="row bg-primary">
+
+  <nav class="navbar  navbar-toggleable-md navbar-light navbar-inverse bg-primary col-12 p-0">
+    
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="margin-top: 20px;">
+      <span class="navbar-toggler-icon" ></span>
+    </button>
+    <a class="navbar-brand ml-1" [routerLink]="['/home']" routerLinkActive="active"><div class="col-12 logo p-0">
+    </div></a>
+
+    <div class="collapse navbar-collapse mr-1" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto text-white">
+    
+          <li class="nav-item active">
+          <a class="nav-link active" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+          </li>
+    
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Informacion</a>
+              <div class="dropdown-menu dropdown-menu-right">
+
+                  <a class="dropdown-item " [routerLink]="['/informacion/']" >Ver todo</a>
+
+                  <span *ngFor="let informacion of informaciones">
+
+                    <a class="dropdown-item " [routerLink]="['/informacion/'+informacion.id]" routerLinkActive="active" >{{informacion.titulo}}</a>
+
+                  </span>
+
+              </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/lugares']" routerLinkActive="active">¿Qué visitar?</a>
+            </li>
+    
+          <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/actividades']" routerLinkActive="active">Actividades</a>
+          </li>
+
+          <li class="nav-item">
+              <span class="nav-link num" >{{ actividades?.length || '0' }}</span>
+          </li>
+    
+          <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/quienes-somos']" routerLinkActive="active">Quiénes somos</a>
+          </li>
+    
+          <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contactar']" routerLinkActive="active">Contactar</a>
+          </li>
+
+          <a [routerLink]="['/carrito']" routerLinkActive="active">
+              <div class="carrito float-left"></div>
+              <div class="nav-link numcarrito float-left" >{{cuenta}}€</div>
+          </a>
+
+        
+        </ul>
+      </div>
+
+  </nav>
+
+</div>

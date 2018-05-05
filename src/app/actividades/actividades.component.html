@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <h1>
+        {{titulo}}
+      </h1>
+      <h2>{{subtitulo}}</h2>
+    </div>
+</div>
+
+<nav *ngIf="login === true">
+
+    <app-menu-actividad></app-menu-actividad>
+
+  </nav>
+
+  <div *ngIf="actividades?.length > 0;else noActividades">
+
+<div class="row">
+    <div class="col-10 offset-1"  id="actividad">
+
+      	<div *ngFor="let actividad of actividades" class="row row-striped">        
+          
+            <div class="col-md-2 text-right">
+              <h1 class="display-4"><span class="badge badge-secondary num">{{actividad.fecha | date: 'd'}}</span></h1>
+              <h2>{{actividad.fecha | date: 'LLL'}}</h2>
+            </div>
+
+            <div class="col-md-10">
+              <h3 class="text-uppercase"><strong>{{ actividad.titulo }}</strong></h3>
+              <ul class="list-inline">
+                  <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Lunes</li>
+                <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ actividad.hora_inicio }} - {{ actividad.hora_fin }}</li>
+                <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ actividad.lugar }} </li>
+              </ul>
+              <p>{{ actividad.descripcion }}</p>
+
+              <span class="badge badge-danger float-right precio">{{actividad.precio}}€</span>
+
+              <span *ngIf="login === true">
+
+                <br>
+                <br>
+
+
+                <button (click)="deleteActividad($event, actividad)" class="btn btn-danger">Eliminar</button>
+                <button (click)="editActividad($event, actividad)" class="btn btn-secondary">Actualizar</button>
+
+              </span>
+
+              <button (click)="sumar($event, actividad)" class="btn btn-danger float-right">Añadir al carrito</button>
+
+              <div *ngIf="login === true && editState && actividadToEdit.id === actividad.id">
+
+                <form (ngSubmit)="updateActividad(actividad)">
+
+                  <div>
+                    <input type="text" [(ngModel)]="actividad.titulo" name="titulo" id="titutlo" placeholder="editar titulo">
+                    <input type="text" [(ngModel)]="actividad.descripcion" name="descripcion" id="descripcion" placeholder="editar descripcion">
+                    <input type="text" [(ngModel)]="actividad.lugar" name="lugar" id="lugar" placeholder="editar lugar">
+                    <input type="date" [(ngModel)]="actividad.fecha" name="fecha" id="fecha" placeholder="editar fecha">
+                    <input type="time" [(ngModel)]="actividad.hora_inicio" name="hora_inicio" id="hora_inicio" placeholder="editar hora de inicio">
+                    <input type="time" [(ngModel)]="actividad.hora_fin" name="hora_fin" id="hora_fin" placeholder="editar hora de fin">
+
+                    <input type="number" [(ngModel)]="actividad.precio" name="precio" id="precio" placeholder="editar precio">
+
+                  </div>
+
+                  <input type="submit" value="¡Listo!" class="btn btn-success">
+
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+
+    </div>
+    </div>
+    </div>
+<br>
+
+
+<ng-template #noActividades>
+    <br>
+    <div class="alert alert-info">No hay actividades para mostrar.</div>
+</ng-template>

@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <h1>
+        {{titulo}}
+      </h1>
+      <h2>{{subtitulo}}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+        <nav *ngIf="login === true">
+
+            <app-menu-usuario></app-menu-usuario>
+    
+        </nav>
+
+    <br><br>
+    <div *ngIf="usuarios?.length > 0;else noUsuarios">
+
+    <div class="card-deck">
+    
+        <div class="card " *ngFor="let usuario of usuarios" style="background-color: #EEE;">
+          <div class="contenedor_imagen">
+          <img width="200" height="200" class="card-img-top" src="{{usuario.foto}}" alt="patricia">
+          </div>
+          <div class="card-block text-white">
+            <h4 class="card-title">{{usuario.nombre}}</h4>
+            <p class="card-text">{{usuario.descripcion}}</p>
+            <p class="card-text"><small>"{{usuario.frase}}"</small></p>
+          </div>
+
+          <button (click)="deleteUsuario($event, usuario)" class="btn btn-danger" *ngIf="login === true">Eliminar</button>
+          <button (click)="editUsuario($event, usuario)" class="btn btn-primary" *ngIf="login === true">Actualizar</button>
+
+
+          <div *ngIf="login === true && editState && usuarioToEdit.id === usuario.id">
+
+              <form (ngSubmit)="updateUsuario(usuario)">
+    
+                <div>
+                  <input type="email" [(ngModel)]="usuario.email" name="email" id="email" placeholder="editar email">
+                  <input type="password" [(ngModel)]="usuario.clave" name="clave" id="clave" placeholder="editar clave">
+                  <input type="text" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" placeholder="editar nombre">
+    
+                  <textarea cols="30" rows="10" [(ngModel)]="usuario.descripcion" name="descripcion" id="descripcion" placeholder="editar descripcion">
+    
+                  </textarea>
+
+                  <input type="text" [(ngModel)]="usuario.frase" name="frase" id="frase" placeholder="editar frase">
+
+                  <br>
+
+                  <label for="foto">url foto</label>
+
+                  <br>
+
+                  
+                  <input type="text" [(ngModel)]="usuario.foto" name="foto" id="foto" placeholder="editar url foto">
+    
+                </div>
+    
+                <input type="submit" value="¡Listo!" class="btn btn-success">
+    
+              </form>
+    
+            </div>
+
+        </div>
+
+        </div>
+      </div>
+
+      </div>
+
+    <br>
+    <br>
+
+</div>
+
+<ng-template #noUsuarios>
+    <br>
+    <div class="alert alert-info">No hay usuarios para mostrar.</div>
+</ng-template>

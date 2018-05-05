@@ -1,0 +1,29 @@
+*{
+	background-color: #343A40;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+a:hover{
+	font-weight: bold;
+}
+li{
+	list-style: none;
+}
+input{
+	color: white;
+}
+#email{
+	margin-left: 6px;
+}
+#password{
+	margin-left: 4px;
+}
+button{
+	margin-top: 4px;
+}
+button:hover{
+	font-weight: bold;
+	background-color: #343A40;
+}

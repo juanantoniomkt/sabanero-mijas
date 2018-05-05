@@ -1,0 +1,22 @@
+  .row-striped {
+      padding: 15px 0;
+      margin-top: 10px;
+  }
+
+  .num
+  {
+      color: black;
+  }
+
+  #actividad>div:nth-of-type(even){
+    background-color:   #5a92ed;
+  }
+  #actividad>div:nth-of-type(odd){
+    background-color:   #CCC;
+  }
+
+  .precio
+  {
+    margin-left: 5px;
+    font-size: 1.5em;
+  }

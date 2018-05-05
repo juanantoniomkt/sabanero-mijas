@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <h1>
+        {{titulo}}
+      </h1>
+      <h2>{{subtitulo}}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <br>
+
+    <nav *ngIf="login === true">
+
+    <app-menu-contactar></app-menu-contactar>
+  
+    </nav>
+
+    <span *ngIf="error === true" class="alert alert-danger">
+        Debe rellenar todos los campos
+    </span>
+
+    <br>
+    <br>
+    <br>
+  
+
+      <div class="row">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-10 col-lg-10 col-xl-10" id="formulario">
+          <h3 class="text-center">{{h3_1}}</h3>
+              
+              <form (ngSubmit)="onsubmit()">
+
+                  <label for="nombre">Nombre:</label>
+
+                  <input type="text" class="form-control form-control-lg" [(ngModel)]="mensaje.nombre" id="nombre" name="nombre" placeholder="Su nombre">
+
+                  <label for="Telefono">Teléfono:</label>
+
+                  <input type="number" class="form-control form-control-lg" [(ngModel)]="mensaje.telefono" id="telefono" name="telefono" placeholder="Su teléfono">
+
+                  <label for="Email">Email:</label>
+
+                  <input type="email" class="form-control form-control-lg" [(ngModel)]="mensaje.email" id="emailf" name="email" placeholder="Su email">
+
+                  <label for="Descripcion">Descripción:</label>
+
+                  <textarea class="form-control form-control-lg" [(ngModel)]="mensaje.mensaje" id="mensaje" name="mensaje" placeholder="Cuéntenos" cols="30" rows="10"></textarea>
+
+
+                <input type="submit" value="Enviar" class="btn btn-success">
+
+              </form>   
+
+          </div>
+          
+      </div>
+
+      <br>
+      <br>
+      <br>
+    </div>
+</div>

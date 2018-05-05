@@ -1,0 +1,100 @@
+<div *ngIf="login === true">
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <h1>
+            {{titulo}}
+          </h1>
+          <h2>{{subtitulo}}</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-10 offset-1"  id="actividad">
+      
+            <nav>
+      
+              <app-menu-actividad></app-menu-actividad>
+      
+            </nav>
+
+            <br>
+            <br>
+      
+
+            <span *ngIf="error === true" class="alert alert-danger">
+                Debe rellenar todos los campos
+            </span>
+
+              <br>
+              <br>
+
+            <div class="row row-striped">
+      
+                <form (ngSubmit)="onsubmit()">
+
+          
+                    <label for="titulo">titulo actividad</label>
+                    <input type="text" name="titulo" id="titulo" [(ngModel)]="actividad.titulo" placeholder="titulo actividad">
+                    <br>
+          
+                    <label for="descripcion">descripcion actividad</label>
+                    <input type="text" name="descripcion" id="descripcion" [(ngModel)]="actividad.descripcion" placeholder="descripcion actividad">
+                    <br>
+          
+                    <label for="lugar">lugar actividad</label>
+                    <input type="text" name="lugar" id="lugar" [(ngModel)]="actividad.lugar" placeholder="lugar actividad">
+                    <br>
+          
+                    <label for="fecha">fecha actividad</label>
+                    <input type="date" name="fecha" id="fecha" [(ngModel)]="actividad.fecha" placeholder="fecha actividad">
+                    <br>
+          
+                    <label for="hora_inicio">hora inicio actividad</label>
+                    <input type="time" name="hora_inicio" id="hora_inicio" [(ngModel)]="actividad.hora_inicio" placeholder="hora de inicio">
+                    <br>
+          
+                    <label for="hora_fin">hora fin actividad</label>
+                    <input type="time" name="hora_fin" id="hora_fin" [(ngModel)]="actividad.hora_fin" placeholder="hora de fin">
+                    <br>
+
+                    <label for="precio">Precio</label>
+                    <input type="number" name="precio" id="precio" [(ngModel)]="actividad.precio" placeholder="precio">
+                    <br>
+          
+                    <input type="submit" value="Agregar actividad" class="btn btn-success">
+          
+                    <br>
+                    <br>
+          
+                </form>
+      
+            </div>
+        </div>
+      </div>
+
+</div>
+
+<div *ngIf="login === false">
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <h1>
+            Permiso denegado
+          </h1>
+          <h2>no puedes acceder a esta página</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-10 offset-1"  id="actividad">
+      
+            <div class="row row-striped">
+      
+              contacte con el administrador
+      
+            </div>
+        </div>
+      </div>
+
+</div>
